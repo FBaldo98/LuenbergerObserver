@@ -21,5 +21,11 @@ int main() {
 
 	getchar();
 
+	DeInitMatrix(&mat_1);
+	DeInitMatrix(&mat_2);
+	DeInitMatrix(&mat_3);
+	DeInitMatrix(&res);
+	DeInitMatrix(&res2);
+
 	return 0;
 }

@@ -16,6 +16,12 @@ void InitMatrix(matrix_t * self, int cols, int rows, double init_val)
 	}
 }
 
+void DeInitMatrix(matrix_t *self) {
+	for (int i = 0; i < self->rows; ++i)
+		free(self->mat[i]);
+	free(self->mat);
+}
+
 void PrintMatrix(matrix_t *self) {
 	for (int i = 0; i < self->rows; ++i) {
 		for (int j = 0; j < self->cols; ++j)
