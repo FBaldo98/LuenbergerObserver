@@ -1,31 +1,16 @@
 #include <stdio.h>
 #include "utils\matrix.h"
+#include "luenberger/luenberger_observer.h"
 
 int main() {
-	matrix_t mat_1, mat_2, mat_3, res, res2;
-	InitMatrix(&mat_1, 4, 3, 2.0);
-	InitMatrix(&mat_2, 3, 4, 2.0);
-	InitMatrix(&mat_3, 4, 4, 2.0);
+	matrix_t u, y, x_hat;
+	luenberger_matrices_t *matrices = (luenberger_matrices_t*)malloc(sizeof(luenberger_matrices_t));
 
-	PrintMatrix(&mat_1);
-	printf("\n\n");
-	PrintMatrix(&mat_2);
+	InitMatrix(&u, 1, 1, 0.0);
+	InitMatrix(&y, 2, 1, 0.0);
+	InitMatrix(&x_hat, 6, 1, 0.0);
 
-	printf("Multiplication\n");
-	MatrixMultiplication(&mat_1, &mat_2, &res);
-	PrintMatrix(&res);
-
-	printf("Sum\n");
-	MatrixSum(&res, &mat_3, &res2);
-	PrintMatrix(&res2);
-
-	getchar();
-
-	DeInitMatrix(&mat_1);
-	DeInitMatrix(&mat_2);
-	DeInitMatrix(&mat_3);
-	DeInitMatrix(&res);
-	DeInitMatrix(&res2);
+	InitLuembergerMatrices(matrices);
 
 	return 0;
 }
