@@ -19,7 +19,6 @@ void InitMatrix(matrix_t * self, int rows, int cols, double init_val)
 void DeInitMatrix(matrix_t *self) {
 	for (int i = 0; i < self->rows; ++i)
 		free(self->mat[i]);
-	free(self->mat);
 }
 
 void PrintMatrix(matrix_t *self) {
@@ -71,6 +70,19 @@ int MatrixSum(matrix_t *m1, matrix_t *m2, matrix_t *res) {
 	for (int i = 0; i < m1->rows; ++i)
 		for (int j = 0; j < m1->cols; ++j)
 			res->mat[i][j] = m1->mat[i][j] + m2->mat[i][j];
+
+	return 0;
+}
+
+int MatrixSubstraction(matrix_t *m1, matrix_t *m2, matrix_t *res) {
+	if (m1->cols != m2->cols || m1->rows != m2->rows)
+		return 1;
+
+	InitMatrix(res, m1->rows, m1->cols, 0.0);
+
+	for (int i = 0; i < m1->rows; ++i)
+		for (int j = 0; j < m1->cols; ++j)
+			res->mat[i][j] = m1->mat[i][j] - m2->mat[i][j];
 
 	return 0;
 }
