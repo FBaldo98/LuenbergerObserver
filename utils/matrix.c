@@ -74,7 +74,7 @@ int MatrixSum(matrix_t *m1, matrix_t *m2, matrix_t *res) {
 	return 0;
 }
 
-int MatrixSubstraction(matrix_t *m1, matrix_t *m2, matrix_t *res) {
+int MatrixSubtraction(matrix_t *m1, matrix_t *m2, matrix_t *res) {
 	if (m1->cols != m2->cols || m1->rows != m2->rows)
 		return 1;
 
