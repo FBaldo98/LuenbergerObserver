@@ -18,6 +18,8 @@ void PrintMatrix(matrix_t *self);
 
 int MatrixMultiplication(matrix_t *m1, matrix_t *m2, matrix_t *res);
 
+int MatrixScalarMultiplication(matrix_t *m1, double scalar, matrix_t *res);
+
 int MatrixSum(matrix_t *m1, matrix_t *m2, matrix_t *res);
 
 #endif
