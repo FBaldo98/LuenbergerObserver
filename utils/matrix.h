@@ -10,7 +10,7 @@ typedef struct matrix_t {
 	int rows;
 } matrix_t;
 
-void InitMatrix(matrix_t *self, int cols, int rows, double init_val);
+void InitMatrix(matrix_t *self, int rows, int cols, double init_val);
 
 void DeInitMatrix(matrix_t *self);
 

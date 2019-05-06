@@ -3,8 +3,8 @@
 
 int main() {
 	matrix_t mat_1, mat_2, mat_3, res, res2;
-	InitMatrix(&mat_1, 3, 4, 2.0);
-	InitMatrix(&mat_2, 4, 3, 2.0);
+	InitMatrix(&mat_1, 4, 3, 2.0);
+	InitMatrix(&mat_2, 3, 4, 2.0);
 	InitMatrix(&mat_3, 4, 4, 2.0);
 
 	PrintMatrix(&mat_1);

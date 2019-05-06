@@ -115,9 +115,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="luenberger\luenberger_observer.h" />
     <ClInclude Include="utils\matrix.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="luenberger\luenberger_observer.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="utils\matrix.c" />
   </ItemGroup>

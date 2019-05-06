@@ -1,6 +1,6 @@
 #include "matrix.h"
 
-void InitMatrix(matrix_t * self, int cols, int rows, double init_val)
+void InitMatrix(matrix_t * self, int rows, int cols, double init_val)
 {
 	self->rows = rows;
 	self->cols = cols;
@@ -38,7 +38,7 @@ int MatrixMultiplication(matrix_t *m1, matrix_t *m2, matrix_t *res) {
 		return 1;
 
 	// Initialize result matrix
-	InitMatrix(res, m1->rows, m2->cols, 0.0);
+	InitMatrix(res, m2->cols, m1->rows, 0.0);
 
 	for (int i = 0; i < m1->rows; ++i)
 		for (int j = 0; j < m2->cols; ++j)
@@ -53,7 +53,7 @@ int MatrixSum(matrix_t *m1, matrix_t *m2, matrix_t *res) {
 	if (m1->cols != m2->cols || m1->rows != m2->rows)
 		return 1;
 
-	InitMatrix(res, m1->cols, m1->rows, 0.0);
+	InitMatrix(res, m1->rows, m1->cols, 0.0);
 
 	for (int i = 0; i < m1->rows; ++i)
 		for (int j = 0; j < m1->cols; ++j)
