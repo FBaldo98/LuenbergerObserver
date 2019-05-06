@@ -41,3 +41,17 @@ int MatrixMultiplication(matrix_t *m1, matrix_t *m2, matrix_t *res) {
 
 	return 0;
 }
+
+// Returns 0 if sum is succesfull, 1 if it fails
+int MatrixSum(matrix_t *m1, matrix_t *m2, matrix_t *res) {
+	if (m1->cols != m2->cols || m1->rows != m2->rows)
+		return 1;
+
+	InitMatrix(res, m1->cols, m1->rows, 0.0);
+
+	for (int i = 0; i < m1->rows; ++i)
+		for (int j = 0; j < m1->cols; ++j)
+			res->mat[i][j] = m1->mat[i][j] + m2->mat[i][j];
+
+	return 0;
+}
