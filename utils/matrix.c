@@ -24,12 +24,12 @@ void PrintMatrix(matrix_t *self) {
 	}
 }
 
-// Returns 1 if multiplication is succesfull, 0 if it fails
+// Returns 0 if multiplication is succesfull, 1 if it fails
 int MatrixMultiplication(matrix_t *m1, matrix_t *m2, matrix_t *res) {
 
 	// Cannot multiply
 	if (m1->rows != m2->cols)
-		return 0;
+		return 1;
 
 	// Initialize result matrix
 	InitMatrix(res, m1->rows, m2->cols, 0.0);
@@ -39,5 +39,5 @@ int MatrixMultiplication(matrix_t *m1, matrix_t *m2, matrix_t *res) {
 			for (int k = 0; k < m2->rows; ++k)
 				res->mat[i][j] += m1->mat[i][k] * m2->mat[k][j];
 
-	return 1;
+	return 0;
 }
