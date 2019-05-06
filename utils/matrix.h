@@ -12,6 +12,8 @@ typedef struct matrix_t {
 
 void InitMatrix(matrix_t *self, int rows, int cols, double init_val);
 
+void CopyMatrixValues(matrix_t *src, matrix_t *dst);
+
 void DeInitMatrix(matrix_t *self);
 
 void PrintMatrix(matrix_t *self);

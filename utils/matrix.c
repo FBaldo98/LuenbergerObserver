@@ -86,3 +86,16 @@ int MatrixSubtraction(matrix_t *m1, matrix_t *m2, matrix_t *res) {
 
 	return 0;
 }
+
+void CopyMatrixValues(matrix_t *src, matrix_t *dst) {
+	if (src->cols != dst->cols || src->rows != dst->rows)
+		return;
+
+	// TODO
+	// Use memcpy
+
+	for (int i = 0; i < src->rows; ++i)
+		for (int j = 0; j < src->cols; ++j)
+			dst->mat[i][j] = src->mat[i][j];
+
+}
