@@ -39,11 +39,11 @@ int MatrixMultiplication(matrix_t *m1, matrix_t *m2, matrix_t *res) {
 		return MatrixScalarMultiplication(m1, m2->mat[0][0], res);
 
 	// Cannot multiply
-	if (m1->rows != m2->cols)
+	if (m1->cols != m2->rows)
 		return 1;
 
 	// Initialize result matrix
-	InitMatrix(res, m2->cols, m1->rows, 0.0);
+	InitMatrix(res, m1->rows, m2->cols, 0.0);
 
 	for (int i = 0; i < m1->rows; ++i)
 		for (int j = 0; j < m2->cols; ++j)
