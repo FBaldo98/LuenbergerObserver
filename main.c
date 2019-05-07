@@ -12,5 +12,7 @@ int main() {
 
 	InitLuembergerMatrices(matrices);
 
+	LuenbergerObserver(&u, &y, &x_hat, matrices);
+
 	return 0;
 }
