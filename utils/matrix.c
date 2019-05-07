@@ -32,6 +32,12 @@ void PrintMatrix(matrix_t *self) {
 // Returns 0 if multiplication is succesfull, 1 if it fails
 int MatrixMultiplication(matrix_t *m1, matrix_t *m2, matrix_t *res) {
 
+	if (m1->cols == 1 && m1->rows == 1)
+		MatrixScalarMultiplication(m2, m1->mat[0][0], res);
+
+	if (m2->cols == 1 && m2->rows == 1)
+		MatrixScalarMultiplication(m1, m2->mat[0][0], res);
+
 	// Cannot multiply
 	if (m1->rows != m2->cols)
 		return 1;
