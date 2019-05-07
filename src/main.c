@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "utils\matrix.h"
+#include "utils/matrix.h"
 #include "luenberger/luenberger_observer.h"
 
 int main() {
