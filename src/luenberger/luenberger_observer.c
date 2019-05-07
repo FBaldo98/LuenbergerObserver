@@ -43,6 +43,14 @@ void InitLuembergerMatrices(luenberger_matrices_t * self)
 }
 
 void LuenbergerObserver(matrix_t* u, matrix_t* y, matrix_t* x_hat, luenberger_matrices_t* matrices) {
+
+	/*
+		LUENBERGER OBSERVER
+		X_hat(k) = Ax(k-1) + Bu(k-1) + L[y(k-1) - Cx(k-1)]
+	*/
+
+	// TODO
+	// Be more memory efficient
 	matrix_t res_1, res_2, y_hat, res_3, res_4, res_5, res_6;
 
 	// Ax(k-1)
