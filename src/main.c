@@ -16,7 +16,20 @@ int main() {
 	// Some testing code, with simulated input. Compare results with Matlab
 
 	// This method must be called every cycle of the control
+
+	u.mat[0][0] = 0.7;
+	y.mat[0][0] = 1.3;
+	y.mat[1][0] = 0.9;
+
 	LuenbergerObserver(&u, &y, &x_hat, matrices);
+
+	PrintMatrix(&u);
+	printf("\n");
+	PrintMatrix(&y);
+	printf("\n");
+	PrintMatrix(&x_hat);
+
+	getchar();
 
 	return 0;
 }
