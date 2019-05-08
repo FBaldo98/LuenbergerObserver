@@ -12,22 +12,23 @@ int main() {
 
 	InitLuembergerMatrices(matrices);
 
-	// TODO
-	// Some testing code, with simulated input. Compare results with Matlab
-
-	// This method must be called every cycle of the control
-
 	u.mat[0][0] = 0.7;
-	y.mat[0][0] = 1.3;
-	y.mat[1][0] = 0.9;
 
-	LuenbergerObserver(&u, &y, &x_hat, matrices);
+	// Example cycle
+	// TODO
+	// Simulate a system both in C and in Simulink
+	// Verify the results
+	for (int i = 0; i < 4; ++i) {
 
-	PrintMatrix(&u);
-	printf("\n");
-	PrintMatrix(&y);
-	printf("\n");
-	PrintMatrix(&x_hat);
+		// This method must be called every cycle of the control
+		LuenbergerObserver(&u, &y, &x_hat, matrices);
+
+		printf("\n");
+		PrintMatrix(&x_hat);
+
+		u.mat[0][0] += 0.2;
+		y.mat[0][0] = u.mat[0][0];
+	}
 
 	getchar();
 
