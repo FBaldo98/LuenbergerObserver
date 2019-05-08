@@ -31,7 +31,31 @@ void InitLuembergerMatrices(luenberger_matrices_t * self)
 	self->C->mat[0][2] = -100.0;
 	self->C->mat[1][2] = 17.0;
 
+	/*
+	L =
+
+		1.0e+04 *
+
+		0.0001    0.0010
+		0.0051    0.0541
+		0.0000    0.0013
+		0.0024    0.0870
+		0.0059    0.0489
+		- 0.0324 - 1.0508
+	*/
+
 	InitMatrix(self->L, 6, 2, 0.0);
+	self->L->mat[0][0] = 1.0;
+	self->L->mat[0][1] = 10.0;
+	self->L->mat[1][0] = 51.0;
+	self->L->mat[1][1] = 541.0;
+	self->L->mat[2][1] = 13.0;
+	self->L->mat[3][0] = 24.0;
+	self->L->mat[3][1] = 870.0;
+	self->L->mat[4][0] = 59.0;
+	self->L->mat[4][1] = 489.0;
+	self->L->mat[5][0] = -324.0;
+	self->L->mat[5][1] = -10508.0;
 
 	x_prev = (matrix_t*)malloc(sizeof(matrix_t));
 	InitMatrix(x_prev, 6, 1, 0.0);
