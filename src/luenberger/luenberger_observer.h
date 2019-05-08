@@ -11,8 +11,6 @@ typedef struct luenberger_matrices_t {
 } luenberger_matrices_t;
 
 matrix_t* x_prev; // 6x1
-matrix_t* u_prev; // 1x1
-matrix_t* y_prev; // 2x1
 
 void InitLuembergerMatrices(luenberger_matrices_t *self);
 
