@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "utils\matrix.h"
+#include "utils/matrix.h"
 #include "luenberger/luenberger_observer.h"
 
 int main() {
@@ -12,6 +12,10 @@ int main() {
 
 	InitLuembergerMatrices(matrices);
 
+	// TODO
+	// Some testing code, with simulated input. Compare results with Matlab
+
+	// This method must be called every cycle of the control
 	LuenbergerObserver(&u, &y, &x_hat, matrices);
 
 	return 0;

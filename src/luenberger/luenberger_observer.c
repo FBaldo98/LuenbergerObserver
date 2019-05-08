@@ -11,8 +11,26 @@ void InitLuembergerMatrices(luenberger_matrices_t * self)
 	// TODO
 	// Matrices size as input
 	InitMatrix(self->A, 6, 6, 0.0);
+
+	self->A->mat[1][0] = -2000.0;
+	self->A->mat[1][1] = -1.2;
+	self->A->mat[1][2] = 2000.0;
+	self->A->mat[1][4] = 20.0;
+	self->A->mat[2][3] = 1.0;
+	self->A->mat[3][0] = 163.9341;
+	self->A->mat[3][2] = -163.9341;
+	self->A->mat[3][5] = -1.6393;
+
 	InitMatrix(self->B, 6, 1, 0.0);
+
+	self->B->mat[3][0] = 27.8688;
+
 	InitMatrix(self->C, 2, 6, 0.0);
+
+	self->C->mat[0][0] = 100.0;
+	self->C->mat[0][2] = -100.0;
+	self->C->mat[1][2] = 17.0;
+
 	InitMatrix(self->L, 6, 2, 0.0);
 
 	u_prev = (matrix_t*)malloc(sizeof(matrix_t));
@@ -25,6 +43,14 @@ void InitLuembergerMatrices(luenberger_matrices_t * self)
 }
 
 void LuenbergerObserver(matrix_t* u, matrix_t* y, matrix_t* x_hat, luenberger_matrices_t* matrices) {
+
+	/*
+		LUENBERGER OBSERVER
+		X_hat(k) = Ax(k-1) + Bu(k-1) + L[y(k-1) - Cx(k-1)]
+	*/
+
+	// TODO
+	// Be more memory efficient
 	matrix_t res_1, res_2, y_hat, res_3, res_4, res_5, res_6;
 
 	// Ax(k-1)
