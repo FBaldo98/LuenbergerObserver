@@ -13,6 +13,7 @@ int main() {
 	InitLuembergerMatrices(matrices);
 
 	u.mat[0][0] = 0.7;
+	y.mat[0][0] = 0.7;
 
 	// Example cycle
 	// TODO
@@ -20,14 +21,15 @@ int main() {
 	// Verify the results
 	for (int i = 0; i < 4; ++i) {
 
+		printf("U: %.2f\n", u.mat[0][0]);
+		printf("Y:\n");
+		PrintMatrix(&y);
+
 		// This method must be called every cycle of the control
 		LuenbergerObserver(&u, &y, &x_hat, matrices);
 
 		printf("\n");
 		PrintMatrix(&x_hat);
-
-		u.mat[0][0] += 0.2;
-		y.mat[0][0] = u.mat[0][0];
 	}
 
 	getchar();

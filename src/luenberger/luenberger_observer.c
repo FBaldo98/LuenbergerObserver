@@ -61,31 +61,33 @@ void InitLuembergerMatrices(luenberger_matrices_t * self)
 	InitMatrix(x_prev, 6, 1, 0.0);
 }
 
-void LuenbergerObserver(matrix_t* u, matrix_t* y, matrix_t* x_hat, luenberger_matrices_t* matrices) {
+int LuenbergerObserver(matrix_t* u, matrix_t* y, matrix_t* x_hat, luenberger_matrices_t* matrices) {
 
 	/*
 		LUENBERGER OBSERVER
 		X_hat(k+1) = Ax(k) + Bu(k) + L[y(k) - Cx(k)]
 	*/
-
+	int ret = 0;
 	// TODO
 	// Be more memory efficient
 	matrix_t res_1, res_2, y_hat, res_3, res_4, res_5, res_6;
 
 	// Ax(k)
-	MatrixMultiplication(matrices->A, x_prev, &res_1);
+	ret = MatrixMultiplication(matrices->A, x_prev, &res_1);
 	// Bu(k)
-	MatrixMultiplication(matrices->B, u, &res_2);
+	ret = MatrixMultiplication(matrices->B, u, &res_2);
 
 	// L[y(k) - Cx(k)]
-	MatrixMultiplication(matrices->C, x_prev, &y_hat);
-	MatrixSubtraction(y, &y_hat, &res_3);
-	MatrixMultiplication(matrices->L, &res_3, &res_4);
+	ret = MatrixMultiplication(matrices->C, x_prev, &y_hat);
+	ret = MatrixSubtraction(y, &y_hat, &res_3);
+	ret = MatrixMultiplication(matrices->L, &res_3, &res_4);
 
-	MatrixSum(&res_1, &res_2, &res_5);
-	MatrixSum(&res_5, &res_4, &res_6);
+	ret = MatrixSum(&res_1, &res_2, &res_5);
+	ret = MatrixSum(&res_5, &res_4, &res_6);
 
 	CopyMatrixValues(&res_6, x_hat);
 	CopyMatrixValues(x_hat, x_prev);
+	
+	return ret;
 
 }
