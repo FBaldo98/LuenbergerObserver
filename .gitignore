@@ -1,5 +1,7 @@
 /.vs
 /x64
 /build/*
+/LuenbergerSharp/bin
+/LuenbergerSharp/obj
 /.vscode
 *.user

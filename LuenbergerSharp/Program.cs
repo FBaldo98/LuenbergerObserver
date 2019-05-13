@@ -57,13 +57,21 @@ namespace LuenbergerSharp
 				{0},
 				{0}});
 
-			LuenbergerObserver(U, Y, X_prev, A, B, C, L);
+			for(int i = 0; i < 30; i++)
+			{
+				X = LuenbergerObserver(U, Y, ref X_prev, A, B, C, L);
+				System.Console.WriteLine(X[0, 0]);
+			}
 
 		}
 
-		public static void LuenbergerObserver(Matrix<double> U, Matrix<double> Y, Matrix<double> X_prev,Matrix<double> A, Matrix<double> B, Matrix<double> C, Matrix<double> L)
+		public static Matrix<double> LuenbergerObserver(Matrix<double> U, Matrix<double> Y, ref Matrix<double> X_prev,Matrix<double> A, Matrix<double> B, Matrix<double> C, Matrix<double> L)
 		{
 			var res = A * X_prev + B * U + L * (Y - (C * X_prev));
+
+			X_prev = res;
+
+			return res;
 		}
 	}
 }
