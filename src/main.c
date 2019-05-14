@@ -55,14 +55,13 @@ int main() {
 	// Verify the results
 	for (int i = 1; i <= 5; ++i) {
 		// This method must be called every cycle of the control
+		PrintMatrix(&x_hat);
+		printf("\n");
 		LuenbergerObserver(&u, &y, &x_hat, matrices);
 
 		u.mat[0][0] = u_vals[i];
 		y.mat[0][0] = y_vals[i][0];
 		y.mat[1][0] = y_vals[i][1];
-
-		printf("\n");
-		PrintMatrix(&x_hat);
 	}
 
 	getchar();
