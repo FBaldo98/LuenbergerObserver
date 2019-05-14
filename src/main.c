@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "utils/matrix.h"
 #include "luenberger/luenberger_observer.h"
+#include <time.h>
 
 int main() {
 	matrix_t u, y, x_hat;
@@ -20,11 +21,6 @@ int main() {
 	// Simulate a system both in C and in Simulink
 	// Verify the results
 	for (int i = 0; i < 4; ++i) {
-
-		printf("U: %.2f\n", u.mat[0][0]);
-		printf("Y:\n");
-		PrintMatrix(&y);
-
 		// This method must be called every cycle of the control
 		LuenbergerObserver(&u, &y, &x_hat, matrices);
 
