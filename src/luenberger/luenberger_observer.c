@@ -73,12 +73,12 @@ int LuenbergerObserver(matrix_t* u, matrix_t* y, matrix_t* x_hat, luenberger_mat
 	matrix_t res_1, res_2, y_hat, res_3, res_4, res_5, res_6;
 
 	// Ax(k)
-	ret = MatrixMultiplication(matrices->A, x_prev, &res_1);
+	ret = MatrixMultiplication(matrices->A, x_hat, &res_1);
 	// Bu(k)
 	ret = MatrixMultiplication(matrices->B, u, &res_2);
 
 	// L[y(k) - Cx(k)]
-	ret = MatrixMultiplication(matrices->C, x_prev, &y_hat);
+	ret = MatrixMultiplication(matrices->C, x_hat, &y_hat);
 	ret = MatrixSubtraction(y, &y_hat, &res_3);
 	ret = MatrixMultiplication(matrices->L, &res_3, &res_4);
 
@@ -86,7 +86,7 @@ int LuenbergerObserver(matrix_t* u, matrix_t* y, matrix_t* x_hat, luenberger_mat
 	ret = MatrixSum(&res_5, &res_4, &res_6);
 
 	CopyMatrixValues(&res_6, x_hat);
-	CopyMatrixValues(x_hat, x_prev);
+	//CopyMatrixValues(x_hat, x_prev);
 	
 	return ret;
 
